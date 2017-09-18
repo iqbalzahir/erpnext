@@ -86,6 +86,11 @@ def get_data():
 					"name": "Leave Block List",
 					"description": _("Block leave applications by department.")
 				},
+				{
+					"type": "doctype",
+					"name": "Employee Receipt",
+					"description": _("Making employee receipt for any payment.")
+				},
 
 			]
 		},
@@ -244,6 +249,11 @@ def get_data():
 			"icon": "fa fa-list",
 			"items": [
 				{
+					"type": "doctype",
+					"name": "Daily Employee Report",
+					"description": _("Making a report for employee.")
+				},
+				{
 					"type": "report",
 					"is_query_report": True,
 					"name": "Employee Leave Balance",
@@ -287,30 +297,4 @@ def get_data():
 
 			]
 		},
-		{
-			"label": _("Help"),
-			"icon": "fa fa-facetime-video",
-			"items": [
-				{
-					"type": "help",
-					"label": _("Setting up Employees"),
-					"youtube_id": "USfIUdZlUhw"
-				},
-				{
-					"type": "help",
-					"label": _("Leave Management"),
-					"youtube_id": "fc0p_AXebc8"
-				},
-				{
-					"type": "help",
-					"label": _("Expense Claims"),
-					"youtube_id": "5SZHJF--ZFY"
-				},
-				{
-					"type": "help",
-					"label": _("Processing Payroll"),
-					"youtube_id": "apgE-f25Rm0"
-				},
-			]
-		}
 	]

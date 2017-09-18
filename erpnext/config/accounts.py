@@ -44,6 +44,11 @@ def get_data():
 					"doctype": "Purchase Invoice",
 					"is_query_report": True
 				},
+				{
+					"type": "doctype",
+					"name":	"General Receipt",
+					"description": _("Make any receipt.")
+				},
 			]
 
 		},
@@ -194,39 +199,6 @@ def get_data():
 					"type": "report",
 					"name": "Purchase Register",
 					"doctype": "Purchase Invoice",
-					"is_query_report": True
-				},
-			]
-		},
-		{
-			"label": _("Goods and Services Tax (GST India)"),
-			"items": [
-				{
-					"type": "doctype",
-					"name": "GST Settings",
-				},
-				{
-					"type": "doctype",
-					"name": "GST HSN Code",
-				},
-				{
-					"type": "report",
-					"name": "GST Sales Register",
-					"is_query_report": True
-				},
-				{
-					"type": "report",
-					"name": "GST Purchase Register",
-					"is_query_report": True
-				},
-				{
-					"type": "report",
-					"name": "GST Itemised Sales Register",
-					"is_query_report": True
-				},
-				{
-					"type": "report",
-					"name": "GST Itemised Purchase Register",
 					"is_query_report": True
 				},
 			]
@@ -459,25 +431,4 @@ def get_data():
 				},
 			]
 		},
-		{
-			"label": _("Help"),
-			"icon": "fa fa-facetime-video",
-			"items": [
-				{
-					"type": "help",
-					"label": _("Chart of Accounts"),
-					"youtube_id": "DyR-DST-PyA"
-				},
-				{
-					"type": "help",
-					"label": _("Opening Accounting Balance"),
-					"youtube_id": "kdgM20Q-q68"
-				},
-				{
-					"type": "help",
-					"label": _("Setting up Taxes"),
-					"youtube_id": "nQ1zZdPgdaQ"
-				}
-			]
-		}
 	]
