@@ -121,8 +121,9 @@ cur_frm.cscript.change_abbr = function() {
 	dialog.fields_dict.update.$input.click(function() {
 		var args = dialog.get_values();
 		if(!args) return;
+		frappe.show_alert(__("Update in progress. It might take a while."));
 		return frappe.call({
-			method: "erpnext.setup.doctype.company.company.replace_abbr",
+			method: "erpnext.setup.doctype.company.company.enqueue_replace_abbr",
 			args: {
 				"company": cur_frm.doc.name,
 				"old": cur_frm.doc.abbr,
@@ -149,7 +150,6 @@ erpnext.company.setup_queries = function(frm) {
 		["default_bank_account", {"account_type": "Bank"}],
 		["default_cash_account", {"account_type": "Cash"}],
 		["default_receivable_account", {"account_type": "Receivable"}],
-		["default_advance_account", {"account_type": "Receivable"}],
 		["default_payable_account", {"account_type": "Payable"}],
 		["default_expense_account", {"root_type": "Expense"}],
 		["default_income_account", {"root_type": "Income"}],

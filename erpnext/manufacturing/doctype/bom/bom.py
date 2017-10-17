@@ -95,8 +95,8 @@ class BOM(WebsiteGenerator):
 			self.validate_bom_currecny(item)
 
 			ret = self.get_bom_material_detail({
-				"item_code": item.item_code, 
-				"item_name": item.item_name, 
+				"item_code": item.item_code,
+				"item_name": item.item_name,
 				"bom_no": item.bom_no,
 				"stock_qty": item.stock_qty
 			})
@@ -128,7 +128,7 @@ class BOM(WebsiteGenerator):
 			 'uom'			: item and args['stock_uom'] or '',
  			 'conversion_factor': 1,
 			 'bom_no'		: args['bom_no'],
-			 'rate'			: rate / self.conversion_rate,
+			 'rate'			: rate / self.conversion_rate if self.conversion_rate else rate,
 			 'qty'			: args.get("qty") or args.get("stock_qty") or 1,
 			 'stock_qty'	: args.get("qty") or args.get("stock_qty") or 1,
 			 'base_rate'	: rate
@@ -312,7 +312,7 @@ class BOM(WebsiteGenerator):
 				li.append("{0} on row {1}".format(i.item_code, i.idx))
 			duplicate_list = '<br>' + '<br>'.join(li)
 
-			frappe.throw(_("Same item has been entered multiple times. {list}").format(list=duplicate_list))
+			frappe.throw(_("Same item has been entered multiple times. {0}").format(duplicate_list))
 
 	def check_recursion(self):
 		""" Check whether recursion occurs in any bom"""
@@ -346,7 +346,7 @@ class BOM(WebsiteGenerator):
 		count = 0
 		if not bom_list:
 			bom_list = []
-		
+
 		if self.name not in bom_list:
 			bom_list.append(self.name)
 
@@ -374,7 +374,7 @@ class BOM(WebsiteGenerator):
 			if d.workstation:
 				if not d.hour_rate:
 					hour_rate = flt(frappe.db.get_value("Workstation", d.workstation, "hour_rate"))
-					d.hour_rate = hour_rate / flt(self.conversion_rate)
+					d.hour_rate = hour_rate / flt(self.conversion_rate) if self.conversion_rate else hour_rate
 
 			if d.hour_rate and d.time_in_mins:
 				d.base_hour_rate = flt(d.hour_rate) * flt(self.conversion_rate)
